@@ -1,16 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="df2dea2e-a294-46f5-84f4-5457c1d78754" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/TestDatabase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/TestNetworkVoronoi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="df2dea2e-a294-46f5-84f4-5457c1d78754" name="Default Changelist" comment="Tested dummy flow. Should be able to start working on algorithm now">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gdma/networkVoronoi/NetworkVoronoiFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gdma/networkVoronoi/NetworkVoronoiFinder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gdma/networkVoronoi/NetworkVoronoiQueryProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gdma/networkVoronoi/NetworkVoronoiQueryProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gdma/networkVoronoi/NetworkVoronoiResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gdma/networkVoronoi/NetworkVoronoiResult.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -28,8 +20,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/gdma/networkVoronoi/NetworkVoronoiResult.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="215">
-              <caret line="21" column="46" selection-start-line="21" selection-start-column="46" selection-end-line="21" selection-end-column="46" />
+            <state relative-caret-position="116">
+              <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -40,8 +32,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/TestNetworkVoronoi.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="185">
-              <caret line="67" column="25" selection-start-line="67" selection-start-column="25" selection-end-line="67" selection-end-column="25" />
+            <state relative-caret-position="206">
+              <caret line="68" column="54" selection-start-line="68" selection-start-column="54" selection-end-line="68" selection-end-column="54" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -52,8 +44,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/TestDatabase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="43" column="16" selection-start-line="43" selection-start-column="16" selection-end-line="43" selection-end-column="16" />
+            <state relative-caret-position="264">
+              <caret line="49" column="13" selection-start-line="49" selection-start-column="13" selection-end-line="49" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -64,8 +56,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/gdma/networkVoronoi/NetworkVoronoiQueryProcessor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="14" column="35" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
+            <state relative-caret-position="185">
+              <caret line="25" column="7" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -76,12 +68,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/gdma/networkVoronoi/NetworkVoronoiFinder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
+            <state relative-caret-position="125">
+              <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#193#194#0" expanded="true" />
-                <element signature="e#231#232#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -113,13 +103,13 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/gdma/networkVoronoi/query/NetworkVoronoiQueryProcessor.java" />
         <option value="$PROJECT_DIR$/src/main/java/gdma/query/NetworkVoronoiQueryProcessor.java" />
-        <option value="$PROJECT_DIR$/src/test/java/TestDatabase.java" />
-        <option value="$PROJECT_DIR$/src/main/java/gdma/networkVoronoi/NetworkVoronoiQueryProcessor.java" />
         <option value="$PROJECT_DIR$/src/main/java/gdma/networkVoronoi/NetworkVoronoiAlgo.java" />
         <option value="$PROJECT_DIR$/src/main/java/gdma/networkVoronoi/NetworkVoronoiGenerator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/gdma/networkVoronoi/NetworkVoronoiFinder.java" />
+        <option value="$PROJECT_DIR$/src/main/java/gdma/networkVoronoi/NetworkVoronoiQueryProcessor.java" />
         <option value="$PROJECT_DIR$/src/main/java/gdma/networkVoronoi/NetworkVoronoiResult.java" />
         <option value="$PROJECT_DIR$/src/test/java/TestNetworkVoronoi.java" />
-        <option value="$PROJECT_DIR$/src/main/java/gdma/networkVoronoi/NetworkVoronoiFinder.java" />
+        <option value="$PROJECT_DIR$/src/test/java/TestDatabase.java" />
       </list>
     </option>
   </component>
@@ -141,6 +131,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -196,7 +187,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -223,12 +213,22 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.TestNetworkVoronoi.testDijkstra">
+  <component name="RunManager" selected="JUnit.TestNetworkVoronoi.testNetworkVoronoi">
     <configuration name="TestNetworkVoronoi.testDijkstra" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="neo4j-network-voronoi" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="TestNetworkVoronoi" />
       <option name="METHOD_NAME" value="testDijkstra" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestNetworkVoronoi.testNetworkVoronoi" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="neo4j-network-voronoi" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="TestNetworkVoronoi" />
+      <option name="METHOD_NAME" value="testNetworkVoronoi" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -246,6 +246,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TestNetworkVoronoi.testNetworkVoronoi" />
         <item itemvalue="JUnit.TestNetworkVoronoi.testDijkstra" />
         <item itemvalue="JUnit.TestNetworkVoronoi.testValidity" />
       </list>
@@ -269,44 +270,53 @@
       <workItem from="1563378326732" duration="843000" />
       <workItem from="1563379235565" duration="283000" />
       <workItem from="1563379639903" duration="777000" />
-      <workItem from="1563380946752" duration="12157000" />
+      <workItem from="1563380946752" duration="13669000" />
+      <workItem from="1563399472527" duration="1759000" />
     </task>
+    <task id="LOCAL-00001" summary="Tested dummy flow. Should be able to start working on algorithm now">
+      <created>1563400619290</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1563400619290</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TestNetworkVoronoi_testValidity - 2019.07.17 at 19h 32m 55s.xml">
-      <configuration name="TestNetworkVoronoi.testValidity" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestNetworkVoronoi_testValidity - 2019.07.17 at 19h 34m 04s.xml">
-      <configuration name="TestNetworkVoronoi.testValidity" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestNetworkVoronoi_testValidity - 2019.07.17 at 19h 35m 41s.xml">
-      <configuration name="TestNetworkVoronoi.testValidity" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestNetworkVoronoi_testValidity - 2019.07.17 at 19h 36m 05s.xml">
-      <configuration name="TestNetworkVoronoi.testValidity" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestNetworkVoronoi_testValidity - 2019.07.17 at 19h 44m 10s.xml">
-      <configuration name="TestNetworkVoronoi.testValidity" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestNetworkVoronoi_testValidity - 2019.07.17 at 19h 46m 53s.xml">
-      <configuration name="TestNetworkVoronoi.testValidity" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestNetworkVoronoi_testValidity - 2019.07.17 at 19h 51m 20s.xml">
-      <configuration name="TestNetworkVoronoi.testValidity" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestNetworkVoronoi_testDijkstra - 2019.07.17 at 19h 51m 34s.xml">
+    <history-entry file="TestNetworkVoronoi_testDijkstra - 2019.07.17 at 23h 11m 12s.xml">
       <configuration name="TestNetworkVoronoi.testDijkstra" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestNetworkVoronoi_testDijkstra - 2019.07.17 at 21h 40m 11s.xml">
+    <history-entry file="TestNetworkVoronoi_testDijkstra - 2019.07.17 at 23h 12m 18s.xml">
       <configuration name="TestNetworkVoronoi.testDijkstra" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestNetworkVoronoi_testDijkstra - 2019.07.17 at 22h 08m 49s.xml">
+    <history-entry file="TestNetworkVoronoi_testDijkstra - 2019.07.17 at 23h 13m 55s.xml">
       <configuration name="TestNetworkVoronoi.testDijkstra" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestNetworkVoronoi_testNetworkVoronoi - 2019.07.17 at 23h 39m 02s.xml">
+      <configuration name="TestNetworkVoronoi.testNetworkVoronoi" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestNetworkVoronoi_testNetworkVoronoi - 2019.07.17 at 23h 47m 53s.xml">
+      <configuration name="TestNetworkVoronoi.testNetworkVoronoi" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestNetworkVoronoi_testNetworkVoronoi - 2019.07.17 at 23h 49m 36s.xml">
+      <configuration name="TestNetworkVoronoi.testNetworkVoronoi" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestNetworkVoronoi_testNetworkVoronoi - 2019.07.17 at 23h 50m 20s.xml">
+      <configuration name="TestNetworkVoronoi.testNetworkVoronoi" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestNetworkVoronoi_testNetworkVoronoi - 2019.07.17 at 23h 52m 44s.xml">
+      <configuration name="TestNetworkVoronoi.testNetworkVoronoi" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestNetworkVoronoi_testNetworkVoronoi - 2019.07.17 at 23h 53m 47s.xml">
+      <configuration name="TestNetworkVoronoi.testNetworkVoronoi" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestNetworkVoronoi_testNetworkVoronoi - 2019.07.17 at 23h 55m 14s.xml">
+      <configuration name="TestNetworkVoronoi.testNetworkVoronoi" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28102000" />
+    <option name="totallyTimeSpent" value="31373000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -319,15 +329,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="0" width="1374" height="736" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2840909" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.28863636" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3294702" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3294702" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -337,7 +346,7 @@
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.3294702" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.3294702" />
+      <window_info active="true" anchor="bottom" id="Messages" order="12" visible="true" weight="0.3294702" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -348,6 +357,10 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Tested dummy flow. Should be able to start working on algorithm now" />
+    <option name="LAST_COMMIT_MESSAGE" value="Tested dummy flow. Should be able to start working on algorithm now" />
   </component>
   <component name="editorHistoryManager">
     <entry file="jar://$MAVEN_REPOSITORY$/org/neo4j/neo4j-graph-algo/3.5.6/neo4j-graph-algo-3.5.6.jar!/org/neo4j/graphalgo/GraphAlgoFactory.class">
@@ -404,8 +417,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/gdma/networkVoronoi/NetworkVoronoiQueryProcessor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="14" column="35" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
+        <state relative-caret-position="185">
+          <caret line="25" column="7" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/TestNetworkVoronoi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="68" column="54" selection-start-line="68" selection-start-column="54" selection-end-line="68" selection-end-column="54" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -414,8 +437,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/TestDatabase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="43" column="16" selection-start-line="43" selection-start-column="16" selection-end-line="43" selection-end-column="16" />
+        <state relative-caret-position="264">
+          <caret line="49" column="13" selection-start-line="49" selection-start-column="13" selection-end-line="49" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -424,20 +447,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/gdma/networkVoronoi/NetworkVoronoiFinder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#193#194#0" expanded="true" />
-            <element signature="e#231#232#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/TestNetworkVoronoi.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="67" column="25" selection-start-line="67" selection-start-column="25" selection-end-line="67" selection-end-column="25" />
+        <state relative-caret-position="125">
+          <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -446,8 +457,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/gdma/networkVoronoi/NetworkVoronoiResult.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="21" column="46" selection-start-line="21" selection-start-column="46" selection-end-line="21" selection-end-column="46" />
+        <state relative-caret-position="116">
+          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
