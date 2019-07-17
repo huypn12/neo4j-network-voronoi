@@ -59,13 +59,14 @@ public class TestNetworkVoronoi {
     }
 
     @Test
-    public void testDijkstra() {
+    public void testNetworkVoronoi() {
         TestDatabase.testNetworkVoronoiCall(db,
-                "MATCH (n1 {name:'n1'}), (n2 {name:'n2'}, (n9 {name:'n9'})" +
-                        "CALL gdma.networkVoronoi.stream([n1,n2,n9], 'WAY')" +
+                "MATCH (n1 {name:'n1'}), (n2 {name:'n2'})" +
+                        "CALL gdma.networkVoronoi.stream([n1,n2], 'WAY')" +
                         "YIELD nodeId, cell\n" +
                         "RETURN nodeId, cell" ,
                 row ->  {
+                    System.out.println(row.get("nodeId").toString());
                 }
         );
     }

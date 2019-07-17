@@ -14,25 +14,17 @@ public class NetworkVoronoiQueryProcessor {
     @Context
     public GraphDatabaseService db;
 
-    private Stream<NetworkVoronoiResult> nop() {
-        ArrayList<Node> nodes = new ArrayList<Node>();
-        return NetworkVoronoiResult.streamNetworkVoronoiResult(nodes);
-    }
 
     @Procedure(mode = Mode.READ)
     @Description("MATCH (n1 {name:’n1'}), (n2 {name:’n2’})" +
             "CALL gdma.networkVoronoi.stream([n1,n2])" +
-            "YIELD nodeId, cell\n" +
+            "YIELD nodeId, cell" +
             "RETURN nodeId, cell")
     public Stream<NetworkVoronoiResult> stream(
             @Name("voronoiCenters") List<Node> voronoiCenters,
             @Name("cost") String cost
     ) {
-        System.out.println("fuck this shit");
-        for (Node it : voronoiCenters) {
-            System.out.println(it.getId());
-        }
-        return nop();
+        return NetworkVoronoiResult.streamNetworkVoronoiResult(voronoiCenters, cost);
     }
 
 }

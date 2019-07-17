@@ -40,13 +40,13 @@ public class TestDatabase {
     public static void testNetworkVoronoiCall(GraphDatabaseService db,
                                               String call, Consumer<Map<String, Object>> consumer) {
         testResult(db, call, (res) -> {
-            try {
-                assertTrue(res.hasNext());
-                Map<String, Object> row = res.next();
-                consumer.accept(row);
-                assertFalse(res.hasNext());
-            } catch(Throwable t) {
-                throw t;
+            while(res.hasNext()) {
+                try {
+                    Map<String, Object> row = res.next();
+                    consumer.accept(row);
+                } catch (Throwable t) {
+                    throw t;
+                }
             }
         });
     }
