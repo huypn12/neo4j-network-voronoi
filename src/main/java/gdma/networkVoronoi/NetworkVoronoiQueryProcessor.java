@@ -1,12 +1,10 @@
 package gdma.networkVoronoi;
 
-import org.neo4j.graphalgo.GraphAlgoFactory;
-import org.neo4j.graphalgo.PathFinder;
-import org.neo4j.graphalgo.WeightedPath;
 import org.neo4j.graphdb.GraphDatabaseService;
 import org.neo4j.graphdb.Node;
 import org.neo4j.procedure.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -16,14 +14,25 @@ public class NetworkVoronoiQueryProcessor {
     @Context
     public GraphDatabaseService db;
 
+    private Stream<NetworkVoronoiResult> nop() {
+        ArrayList<Node> nodes = new ArrayList<Node>();
+        return NetworkVoronoiResult.streamNetworkVoronoiResult(nodes);
+    }
+
     @Procedure(mode = Mode.READ)
-    @Description("gdma.query.networkVoronoi() YIELD path, weight" +
-            "- query network voronoi clustering using parallel dijsktra")
-    public Stream<NetworkVoronoiResult> dijkstra(
-            @Name("vcells") List<Node> vcells
+    @Description("MATCH (n1 {name:’n1'}), (n2 {name:’n2’})" +
+            "CALL gdma.networkVoronoi.stream([n1,n2])" +
+            "YIELD nodeId, cell\n" +
+            "RETURN nodeId, cell")
+    public Stream<NetworkVoronoiResult> stream(
+            @Name("voronoiCenters") List<Node> voronoiCenters,
+            @Name("cost") String cost
     ) {
-        NetworkVoronoiFactory voronoiFactory = 
-        return NetworkVoronoiResult.streamNetworkVoronoiResult();
+        System.out.println("fuck this shit");
+        for (Node it : voronoiCenters) {
+            System.out.println(it.getId());
+        }
+        return nop();
     }
 
 }

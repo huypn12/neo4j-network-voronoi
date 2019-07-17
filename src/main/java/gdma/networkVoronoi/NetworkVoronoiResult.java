@@ -9,16 +9,16 @@ import java.util.stream.Stream;
 
 
 public class NetworkVoronoiResult {
-    private Node node;
-    private Node vcell;
+    public Node nodeId;
+    public Node cell;
 
     public NetworkVoronoiResult(Map.Entry<Node, Node> result) {
-        this.node = result.getKey();
-        this.vcell = result.getValue();
+        this.nodeId = result.getKey();
+        this.cell = result.getValue();
     }
 
     public static Stream<NetworkVoronoiResult> streamNetworkVoronoiResult(ArrayList<Node> voronoiNodes) {
-        Map<Node, Node> vcells = NetworkVoronoiFactory.voronoi();
-        StreamSupport.stream(vcells.entrySet().spliterator(), false).map(NetworkVoronoiResult::new);
+        Map<Node, Node> vcells = NetworkVoronoiFinder.generate();
+        return StreamSupport.stream(vcells.entrySet().spliterator(), false).map(NetworkVoronoiResult::new);
     }
 }
