@@ -3,108 +3,127 @@ package gdma.networkVoronoi;
 import org.neo4j.graphalgo.CostAccumulator;
 import org.neo4j.graphalgo.CostEvaluator;
 import org.neo4j.graphalgo.impl.shortestpath.Dijkstra;
-import org.neo4j.graphalgo.impl.shortestpath.SingleSourceShortestPath;
+import org.neo4j.graphalgo.impl.shortestpath.DijkstraPriorityQueue;
+import org.neo4j.graphalgo.impl.shortestpath.DijkstraPriorityQueueFibonacciImpl;
 import org.neo4j.graphdb.*;
+import org.neo4j.helpers.collection.Iterables;
 
 import java.util.*;
 
-public class ParallelDijsktra<CostType> extends Dijkstra<CostType> implements SingleSourceShortestPath<CostType>
+public class ParallelDijsktra<CostType>
 {
-    private Map<Node, Node> voronoiCells;
 
-    DijkstraIterator dijstraIterator;
+    ParallelDijsktraIterator parallelDijsktraIterator;
+
+
+
+    // Result
+    protected Map<Node, Node> voronoiCells;
 
     /**
      * Find network voronoi (a map v:N->N, from each node to its Voronoi cell
      * @see Dijkstra
      */
-    public ParallelDijsktra(CostType startCost, Node startNode,
-                            CostEvaluator<CostType> costEvaluator,
+    public ParallelDijsktra(List<Node> startNodes, CostType startCost,
                             CostAccumulator<CostType> costAccumulator,
+                            CostEvaluator<CostType> costEvaluator,
                             Comparator<CostType> costComparator,
-                            Direction relationDirection, RelationshipType... costRelationTypes )
+                            RelationshipType costRelationType)
     {
-        super( startCost, startNode, null, costEvaluator, costAccumulator,
-                costComparator, relationDirection, costRelationTypes );
+        parallelDijsktraIterator = new ParallelDijsktraIterator(startNodes, startCost,
+                costAccumulator, costEvaluator, costComparator, costRelationType);
+        voronoiCells = new HashMap<>();
         reset();
     }
 
-    @Override
     public void reset()
     {
-        super.reset();
         voronoiCells = new HashMap<>();
     }
 
 
-    protected class ParallelDijsktraIterator extends Dijkstra.DijkstraIterator {
-        public ParallelDijsktraIterator(Node startNode,
-                                        HashMap<Node, List<Relationship>> predecessors,
-                                        HashMap<Node, CostType> mySeen,
-                                        HashMap<Node, CostType> otherSeen,
-                                        HashMap<Node, CostType> myDistances,
-                                        HashMap<Node, CostType> otherDistances, boolean backwards )
+    protected class ParallelDijsktraIterator implements Iterator<Node> {
+        protected List<Node> startNodes;
+        protected CostType startCost; // Start cost is 0 for all voronoi centers
+        protected CostAccumulator<CostType> costAccumulator;
+        protected CostEvaluator<CostType> costEvaluator;
+        protected Comparator<CostType> costComparator;
+        protected RelationshipType costRelationType;
+        protected Map<Node, CostType> distance;
+        protected DijkstraPriorityQueue<CostType> queue;
+
+        public ParallelDijsktraIterator(List<Node> startNodes, CostType startCost,
+                                        CostAccumulator<CostType> costAccumulator,
+                                        CostEvaluator<CostType> costEvaluator,
+                                        Comparator<CostType> costComparator,
+                                        RelationshipType costRelationType)
         {
-            super(startNode, predecessors, mySeen, otherSeen, myDistances, otherDistances, backwards);
+            this.startNodes = startNodes;
+            this.startCost = startCost;
+            this.costAccumulator = costAccumulator;
+            this.costEvaluator = costEvaluator;
+            this.costComparator = costComparator;
+            this.costRelationType = costRelationType;
+            this.distance = new HashMap<>();
+            InitQueue();
         }
 
+        protected void InitQueue() {
+            queue = new DijkstraPriorityQueueFibonacciImpl<>( costComparator );
+            for (Node startNode : startNodes)
+            {
+                queue.insertValue(startNode, startCost);
+            }
+
+        }
 
         @Override
         public Node next()
         {
-            return null;
+            if ( !hasNext() )
+            {
+                throw new NoSuchElementException();
+            }
+
+            Node currentNode = queue.extractMin();
+            CostType currentDistance = distance.get(currentNode);
+
+            ResourceIterable<Relationship> relationships = Iterables.asResourceIterable(
+                    currentNode.getRelationships(costRelationType, Direction.INCOMING));
+            try (ResourceIterator<Relationship> iterator = relationships.iterator()) {
+                while (iterator.hasNext()) {
+                    Relationship relationship = iterator.next();
+
+
+                    //TODO: complete this part, this is only dummy
+                    Node targetNode = relationship.getOtherNode(currentNode);
+                    CostType targetCost = costEvaluator.getCost(relationship, Direction.INCOMING);
+                    queue.insertValue(targetNode, targetCost);
+                    voronoiCells.putIfAbsent(currentNode, targetNode);
+                }
+            }
+            return currentNode;
+        }
+
+        @Override
+        public boolean hasNext()
+        {
+            return !queue.isEmpty();
         }
     }
 
-    public Node getVoronoiCenter(Node node)
+
+    public boolean calculate()
     {
-        return null;
+        while (parallelDijsktraIterator.hasNext())
+        {
+            parallelDijsktraIterator.next();
+        }
+        return true;
     }
 
-    // These overrides should be copied from singlesoureshortestpathdijsktra
-
-    @Override
-    public List<PropertyContainer> getPath(Node node) {
-        return null;
-    }
-
-    @Override
-    public List<Node> getPathAsNodes(Node node) {
-        return null;
-    }
-
-    @Override
-    public List<Relationship> getPathAsRelationships(Node node) {
-        return null;
-    }
-
-    @Override
-    public List<List<PropertyContainer>> getPaths(Node node) {
-        return null;
-    }
-
-    @Override
-    public List<List<Node>> getPathsAsNodes(Node node) {
-        return null;
-    }
-
-    @Override
-    public List<List<Relationship>> getPathsAsRelationships(Node node) {
-        return null;
-    }
-
-    @Override
-    public CostType getCost(Node node) {
-        return null;
-    }
-
-    @Override
-    public List<Node> getPredecessorNodes(Node node) {
-        return null;
-    }
-
-    @Override
-    public Map<Node, List<Relationship>> getPredecessors() {
-        return null;
+    public Iterable<Map.Entry<Node, Node>> getVoronoiCells()
+    {
+        return voronoiCells.entrySet();
     }
 }

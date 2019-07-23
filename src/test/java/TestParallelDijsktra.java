@@ -62,7 +62,7 @@ public class TestParallelDijsktra {
     public void testNetworkVoronoi() {
         TestDatabase.testNetworkVoronoiCall(db,
                 "MATCH (n1 {name:'n1'}), (n2 {name:'n2'})" +
-                        "CALL gdma.networkVoronoi.stream([n1,n2], 'WAY')" +
+                        "CALL gdma.networkVoronoi.stream([n1,n2], 'WAY', 'weight')" +
                         "YIELD nodeId, cell\n" +
                         "RETURN nodeId, cell" ,
                 row ->  {

@@ -20,10 +20,11 @@ public class NetworkVoronoiQueryProcessor {
             "YIELD nodeId, cell" +
             "RETURN nodeId, cell")
     public Stream<ParallelDijsktraResult> stream(
-            @Name("voronoiCenters") List<Node> voronoiCenters,
-            @Name("cost") String cost
+            @Name("voronoiCells") List<Node> voronoiCenters,
+            @Name("relationshipName") String relationshipName,
+            @Name("costPropertyName") String costPropertyName
     ) {
-        return ParallelDijsktraResult.streamNetworkVoronoiResult(voronoiCenters, cost);
+        return ParallelDijsktraResult.streamNetworkVoronoiResult(voronoiCenters, relationshipName, costPropertyName);
     }
 
     private PathExpander<Object> buildPathExpander(String cost) {
