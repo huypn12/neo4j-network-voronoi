@@ -4,7 +4,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.neo4j.graphdb.GraphDatabaseService;
 
-public class TestNetworkVoronoi {
+public class TestParallelDijsktra {
 
     private static final String SETUP_SAMPLE_GRAPH= "CREATE\n" +
             "(n0 {name:\"n0\"}), " +
