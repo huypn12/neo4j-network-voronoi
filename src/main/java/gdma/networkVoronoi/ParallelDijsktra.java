@@ -15,10 +15,8 @@ public class ParallelDijsktra<CostType>
 
     ParallelDijsktraIterator parallelDijsktraIterator;
 
-
-
     // Result
-    protected Map<Node, Node> voronoiCells;
+    protected Map<Node, Node> voronoiCells = new HashMap<>();
 
     /**
      * Find network voronoi (a map v:N->N, from each node to its Voronoi cell
@@ -32,8 +30,6 @@ public class ParallelDijsktra<CostType>
     {
         parallelDijsktraIterator = new ParallelDijsktraIterator(startNodes, startCost,
                 costAccumulator, costEvaluator, costComparator, costRelationType);
-        voronoiCells = new HashMap<>();
-        reset();
     }
 
     public void reset()
@@ -49,6 +45,7 @@ public class ParallelDijsktra<CostType>
         protected CostEvaluator<CostType> costEvaluator;
         protected Comparator<CostType> costComparator;
         protected RelationshipType costRelationType;
+        protected Map<Node, Boolean> marked;
         protected Map<Node, CostType> distance;
         protected DijkstraPriorityQueue<CostType> queue;
 
@@ -65,6 +62,7 @@ public class ParallelDijsktra<CostType>
             this.costComparator = costComparator;
             this.costRelationType = costRelationType;
             this.distance = new HashMap<>();
+            this.marked = new HashMap<>();
             InitQueue();
         }
 
@@ -72,9 +70,22 @@ public class ParallelDijsktra<CostType>
             queue = new DijkstraPriorityQueueFibonacciImpl<>( costComparator );
             for (Node startNode : startNodes)
             {
+                // init()
+                distance.put(startNode, startCost);
                 queue.insertValue(startNode, startCost);
+                voronoiCells.put(startNode, startNode);
+                marked.put(startNode, true);
             }
 
+        }
+
+        private void insertOrReplaceVoronoiCenter(Node targetNode, Node currentNode) {
+            Node center = voronoiCells.get(currentNode);
+            if (!voronoiCells.containsKey(targetNode)) {
+                voronoiCells.put(targetNode, center);
+            } else {
+                voronoiCells.replace(targetNode, center);
+            }
         }
 
         @Override
@@ -85,21 +96,35 @@ public class ParallelDijsktra<CostType>
                 throw new NoSuchElementException();
             }
 
+            // expandnext()
             Node currentNode = queue.extractMin();
-            CostType currentDistance = distance.get(currentNode);
+            marked.putIfAbsent(currentNode, true);
 
+            CostType currentDistance = distance.get(currentNode);
             ResourceIterable<Relationship> relationships = Iterables.asResourceIterable(
                     currentNode.getRelationships(costRelationType, Direction.INCOMING));
             try (ResourceIterator<Relationship> iterator = relationships.iterator()) {
                 while (iterator.hasNext()) {
                     Relationship relationship = iterator.next();
-
-
-                    //TODO: complete this part, this is only dummy
+                    // scansuc()
                     Node targetNode = relationship.getOtherNode(currentNode);
-                    CostType targetCost = costEvaluator.getCost(relationship, Direction.INCOMING);
-                    queue.insertValue(targetNode, targetCost);
-                    voronoiCells.putIfAbsent(currentNode, targetNode);
+                    if (marked.containsKey(targetNode)) {
+                        continue;
+                    }
+                    CostType edgeCost = costEvaluator.getCost(relationship, Direction.INCOMING);
+                    CostType delta = costAccumulator.addCosts(currentDistance, edgeCost);
+                    if (!distance.containsKey(targetNode)) {
+                        distance.put(targetNode, delta);
+                        insertOrReplaceVoronoiCenter(targetNode, currentNode);
+                        queue.insertValue(targetNode, delta);
+                    } else  {
+                        CostType targetDistance = distance.get(targetNode);
+                        if (costComparator.compare(delta, targetDistance) < 0) {
+                            insertOrReplaceVoronoiCenter(targetNode, currentNode);
+                            queue.decreaseValue(targetNode, delta);
+                            distance.replace(targetNode, delta);
+                        }
+                    }
                 }
             }
             return currentNode;
