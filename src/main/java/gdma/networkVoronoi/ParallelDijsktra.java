@@ -26,10 +26,11 @@ public class ParallelDijsktra<CostType>
                             CostAccumulator<CostType> costAccumulator,
                             CostEvaluator<CostType> costEvaluator,
                             Comparator<CostType> costComparator,
-                            RelationshipType costRelationType)
+                            RelationshipType costRelationType,
+                            Direction voronoiDirection)
     {
         parallelDijsktraIterator = new ParallelDijsktraIterator(startNodes, startCost,
-                costAccumulator, costEvaluator, costComparator, costRelationType);
+                costAccumulator, costEvaluator, costComparator, costRelationType, voronoiDirection);
     }
 
     public void reset()
@@ -48,12 +49,14 @@ public class ParallelDijsktra<CostType>
         protected Map<Node, Boolean> marked;
         protected Map<Node, CostType> distance;
         protected DijkstraPriorityQueue<CostType> queue;
+        protected Direction voronoiDirection;
 
         public ParallelDijsktraIterator(List<Node> startNodes, CostType startCost,
                                         CostAccumulator<CostType> costAccumulator,
                                         CostEvaluator<CostType> costEvaluator,
                                         Comparator<CostType> costComparator,
-                                        RelationshipType costRelationType)
+                                        RelationshipType costRelationType,
+                                        Direction voronoiDirection)
         {
             this.startNodes = startNodes;
             this.startCost = startCost;
@@ -63,6 +66,7 @@ public class ParallelDijsktra<CostType>
             this.costRelationType = costRelationType;
             this.distance = new HashMap<>();
             this.marked = new HashMap<>();
+            this.voronoiDirection = voronoiDirection;
             InitQueue();
         }
 
@@ -102,7 +106,7 @@ public class ParallelDijsktra<CostType>
 
             CostType currentDistance = distance.get(currentNode);
             ResourceIterable<Relationship> relationships = Iterables.asResourceIterable(
-                    currentNode.getRelationships(costRelationType, Direction.INCOMING));
+                    currentNode.getRelationships(costRelationType, voronoiDirection));
             try (ResourceIterator<Relationship> iterator = relationships.iterator()) {
                 while (iterator.hasNext()) {
                     Relationship relationship = iterator.next();
@@ -111,7 +115,7 @@ public class ParallelDijsktra<CostType>
                     if (marked.containsKey(targetNode)) {
                         continue;
                     }
-                    CostType edgeCost = costEvaluator.getCost(relationship, Direction.INCOMING);
+                    CostType edgeCost = costEvaluator.getCost(relationship, voronoiDirection);
                     CostType delta = costAccumulator.addCosts(currentDistance, edgeCost);
                     if (!distance.containsKey(targetNode)) {
                         distance.put(targetNode, delta);

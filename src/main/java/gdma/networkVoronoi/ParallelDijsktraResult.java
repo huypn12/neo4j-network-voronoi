@@ -35,7 +35,8 @@ public class ParallelDijsktraResult {
                 new DoubleAdder(),
                 doubleCostEvaluator(costPropertyName),
                 new NoneStrictMath.CommonToleranceComparator(1e-9),
-                RelationshipType.withName(relationshipName));
+                RelationshipType.withName(relationshipName),
+                Direction.OUTGOING);
         algo.calculate();
         return StreamSupport.stream(algo.getVoronoiCells().spliterator(), false).map(ParallelDijsktraResult::new);
     }
