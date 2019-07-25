@@ -2,7 +2,12 @@ import gdma.networkVoronoi.NetworkVoronoiQueryProcessor;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Assertions;
 import org.neo4j.graphdb.GraphDatabaseService;
+import org.neo4j.graphdb.Node;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class TestParallelDijsktra {
 
@@ -47,25 +52,34 @@ public class TestParallelDijsktra {
 
     @Test
     public void testValidity() {
-
     }
 
     @Test
-    public void testNetworkVoronoi() {
+    public void testInwardVoronoi() {
+        // expected, according to Wrwig
+        Map<String, String> expected = new HashMap<>();
+        expected.put("n0", "n3");
+        expected.put("n1", "n3");
+        expected.put("n3", "n3");
+        expected.put("n4", "n4");
+        expected.put("n5", "n4");
+
         TestDatabase.testNetworkVoronoiCall(db,
                 "MATCH (n3 {name:'n3'}), (n4 {name:'n4'})" +
                         "CALL gdma.networkVoronoi.stream([n3,n4], 'WAY', 'weight')" +
                         "YIELD nodeId, cell\n" +
                         "RETURN nodeId.name AS node, cell.name AS center",
                 row ->  {
-                    System.out.println(row.get("node").toString() +
-                            " in " +
-                            row.get("center").toString());
+                    String node = row.get("node").toString();
+                    String actualCenter = row.get("center").toString();
+                    String expectedCenter = expected.get(node);
+                    Assertions.assertEquals(expectedCenter, actualCenter);
+                    System.out.println(node + " in cell " + actualCenter);
                 }
         );
     }
 
-    /*
+    /* Keep it here in case of another test
     private static final String SETUP_SAMPLE_GRAPH= "CREATE\n" +
             "(n0 {name:\"n0\"}), " +
             "(n1 {name:\"n1\"}), " +

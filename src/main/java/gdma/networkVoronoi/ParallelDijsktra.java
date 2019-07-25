@@ -80,7 +80,6 @@ public class ParallelDijsktra<CostType>
                 voronoiCells.put(startNode, startNode);
                 marked.put(startNode, true);
             }
-
         }
 
         private void insertOrReplaceVoronoiCenter(Node targetNode, Node currentNode) {
@@ -99,18 +98,16 @@ public class ParallelDijsktra<CostType>
             {
                 throw new NoSuchElementException();
             }
-
-            // expandnext()
             Node currentNode = queue.extractMin();
             marked.putIfAbsent(currentNode, true);
-
+            // expandnext()
             CostType currentDistance = distance.get(currentNode);
             ResourceIterable<Relationship> relationships = Iterables.asResourceIterable(
                     currentNode.getRelationships(costRelationType, voronoiDirection));
             try (ResourceIterator<Relationship> iterator = relationships.iterator()) {
                 while (iterator.hasNext()) {
-                    Relationship relationship = iterator.next();
                     // scansuc()
+                    Relationship relationship = iterator.next();
                     Node targetNode = relationship.getOtherNode(currentNode);
                     if (marked.containsKey(targetNode)) {
                         continue;
