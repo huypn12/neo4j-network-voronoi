@@ -36,7 +36,7 @@ public class ParallelDijsktraResult {
                 doubleCostEvaluator(costPropertyName),
                 new NoneStrictMath.CommonToleranceComparator(1e-9),
                 RelationshipType.withName(relationshipName),
-                Direction.OUTGOING);
+                Direction.INCOMING);
         algo.calculate();
         return StreamSupport.stream(algo.getVoronoiCells().spliterator(), false).map(ParallelDijsktraResult::new);
     }
