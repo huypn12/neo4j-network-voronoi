@@ -16,7 +16,7 @@ public class NetworkVoronoiQueryProcessor {
 
     @Procedure(mode = Mode.READ)
     @Description("MATCH (n1 {name:’n1'}), (n2 {name:’n2’})" +
-            "CALL gdma.networkVoronoi.stream([n1,n2])" +
+            "CALL gdma.networkVoronoi.stream([n1,n2], relationshipName, costPropertyName)" +
             "YIELD nodeId, cell" +
             "RETURN nodeId, cell")
     public Stream<ParallelDijsktraResult> stream(
@@ -25,12 +25,6 @@ public class NetworkVoronoiQueryProcessor {
             @Name("costPropertyName") String costPropertyName
     ) {
         return ParallelDijsktraResult.streamNetworkVoronoiResult(voronoiCenters, relationshipName, costPropertyName);
-    }
-
-    private PathExpander<Object> buildPathExpander(String cost) {
-        PathExpanderBuilder builder = PathExpanderBuilder.empty();
-        builder.add(RelationshipType.withName(cost), INCOMING);
-        return builder.build();
     }
 
 }

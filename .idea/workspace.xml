@@ -7,9 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="df2dea2e-a294-46f5-84f4-5457c1d78754" name="Default Changelist" comment="Tested dummy flow. Should be able to start working on algorithm now">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gdma/networkVoronoi/NetworkVoronoiQueryProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gdma/networkVoronoi/NetworkVoronoiQueryProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gdma/networkVoronoi/parser/RelationshipTypeAndDirectionParser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/TestParallelDijsktra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestParallelDijsktra.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -163,7 +165,7 @@
       <workItem from="1563890275538" duration="4847000" />
       <workItem from="1563895477221" duration="32654000" />
       <workItem from="1563981187784" duration="4643000" />
-      <workItem from="1564033543615" duration="4769000" />
+      <workItem from="1564033543615" duration="6293000" />
     </task>
     <task id="LOCAL-00001" summary="Tested dummy flow. Should be able to start working on algorithm now">
       <created>1563400619290</created>
