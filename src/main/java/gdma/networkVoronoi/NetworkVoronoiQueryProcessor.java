@@ -18,7 +18,9 @@ public class NetworkVoronoiQueryProcessor {
     @Description("MATCH (n1 {name:’n1'}), (n2 {name:’n2’})" +
             "CALL gdma.networkVoronoi.stream([n1,n2], relationshipName, costPropertyName)" +
             "YIELD nodeId, cell" +
-            "RETURN nodeId, cell")
+            "RETURN nodeId, cell" +
+            " - Description: Find (inward) Voronoi diagram, expand to a certain Relationship and Cost property"
+        )
     public Stream<ParallelDijsktraResult> stream(
             @Name("voronoiCells") List<Node> voronoiCenters,
             @Name("relationshipName") String relationshipName,

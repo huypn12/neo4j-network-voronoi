@@ -27,6 +27,7 @@ public class ParallelDijsktraResult {
         this.cell = result.getValue();
     }
 
+    // TODO: inward or outward selected as a parameter
     public static Stream<ParallelDijsktraResult> streamNetworkVoronoiResult(List<Node> startNodes,
                                                                             String relationshipName,
                                                                             String costPropertyName) {
@@ -36,7 +37,7 @@ public class ParallelDijsktraResult {
                 doubleCostEvaluator(costPropertyName),
                 new NoneStrictMath.CommonToleranceComparator(1e-9),
                 RelationshipType.withName(relationshipName),
-                Direction.INCOMING);
+                Direction.INCOMING); // Change this to OUTGOING for outward voronoi diagram
         algo.calculate();
         return StreamSupport.stream(algo.getVoronoiCells().spliterator(), false).map(ParallelDijsktraResult::new);
     }

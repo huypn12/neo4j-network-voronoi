@@ -56,7 +56,7 @@ public class TestParallelDijsktra {
 
     @Test
     public void testInwardVoronoi() {
-        // expected, according to Wrwig
+        // expected, according to Erwig
         Map<String, String> expected = new HashMap<>();
         expected.put("n0", "n3");
         expected.put("n1", "n3");
