@@ -19,6 +19,26 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <!-- This generates a jar-file with our procedure code,
+                     plus any dependencies marked as `compile` scope.
+                     This should then be deployed in the `plugins` directory
+                     of each Neo4j instance in your deployment.
+                     After a restart, the procedure is available for calling. -->
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>2.4.3</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+
         </plugins>
     </build>
     <dependencies>

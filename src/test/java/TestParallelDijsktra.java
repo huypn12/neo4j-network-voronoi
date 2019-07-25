@@ -56,11 +56,11 @@ public class TestParallelDijsktra {
                 "MATCH (n3 {name:'n3'}), (n4 {name:'n4'})" +
                         "CALL gdma.networkVoronoi.stream([n3,n4], 'WAY', 'weight')" +
                         "YIELD nodeId, cell\n" +
-                        "RETURN nodeId, cell" ,
+                        "RETURN nodeId.name AS node, cell.name AS center",
                 row ->  {
-                    System.out.println(row.get("nodeId").toString() +
+                    System.out.println(row.get("node").toString() +
                             " in " +
-                            row.get("cell").toString());
+                            row.get("center").toString());
                 }
         );
     }
